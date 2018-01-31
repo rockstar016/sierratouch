@@ -1,0 +1,6 @@
+framework module MLVerticalProgressView {
+  umbrella header "MLVerticalProgressView-umbrella.h"
+
+  export *
+  module * { export * }
+}
