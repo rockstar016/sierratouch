@@ -10,6 +10,7 @@ import UIKit
 import MBProgressHUD
 import Alamofire
 
+@available(iOS 10.0, *)
 class ScheduleListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var table_schedule: UITableView!
@@ -164,7 +165,7 @@ class ScheduleListViewController: UIViewController, UITableViewDelegate, UITable
         secondViewController.schedule_model = temp_model
         secondViewController.is_update = false
         secondViewController.touch_device = touch_device
-        self.present(secondViewController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(secondViewController, animated: true)
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {

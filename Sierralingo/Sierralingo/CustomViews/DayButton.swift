@@ -6,16 +6,18 @@
 //  Copyright © 2017 Rock. All rights reserved.
 //
 import UIKit
+@available(iOS 10.0, *)
 @IBDesignable
 class DayButton: UIButton {
     @IBInspectable
     var isChecked: Bool = false {
         didSet{
             if isChecked == true {
-                self.backgroundColor = Constants.ControlColor.Dark_Green_Color
+                    self.backgroundColor = UIColor(displayP3Red: 182/255, green: 200/255, blue: 40/255, alpha: 1.0)
+                    // Fallback on earlier versions
                 self.setTitleColor(UIColor.white, for: .normal)
             } else {
-                self.backgroundColor = UIColor.gray
+                self.backgroundColor = UIColor(displayP3Red: 111/255, green: 113/255, blue: 121/255, alpha: 1.0)
                 self.setTitleColor(UIColor.white, for: .normal)
             }
         }

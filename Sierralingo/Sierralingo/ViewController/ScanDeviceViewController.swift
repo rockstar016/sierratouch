@@ -17,6 +17,7 @@ class ScanDeviceViewController: UIViewController {
     var internetReachability = Reachability()
     var ssid:String = String()
     var isFirstDisply :  Bool = false
+    
     func updateInterfaceWithReachability(reachability_noti: Notification)
     {
         let reach = reachability_noti.object as! Reachability
@@ -67,6 +68,8 @@ class ScanDeviceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        InitPushedController()
+        
         if WhenBack.sharedInstance.Key == true || isFirstDisply == true{
              WhenBack.sharedInstance.Key = false
              MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -113,8 +116,8 @@ class ScanDeviceViewController: UIViewController {
     
     
     @IBAction func onClickBackButton(_ sender: Any) {
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "touchListActivity") as! TouchListViewController
-        self.present(secondViewController, animated: true, completion: nil)
+        
+        self.dismiss(animated: true, completion: nil)
     }
 
     @IBAction func onClickYes(_ sender: Any) {

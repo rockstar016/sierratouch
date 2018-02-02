@@ -89,9 +89,12 @@ class TouchListViewController: UIViewController, UICollectionViewDelegateFlowLay
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "devicemanipulate") as! DeviceManipulateViewController
-        secondViewController.device = arraylist_devices[indexPath.row]
-        self.navigationController?.pushViewController(secondViewController, animated: true)
+    
+        let navController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DeviceNavController") as! UINavigationController
+        let secondVC = navController.viewControllers.first as! DeviceManipulateViewController
+        secondVC.device = arraylist_devices[indexPath.row]
+        self.present(navController, animated: true, completion: nil)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -132,19 +135,20 @@ class TouchListViewController: UIViewController, UICollectionViewDelegateFlowLay
     
     
     @IBAction func onClickAddTouchDevice(_ sender: Any) {
-        ssid = getWifiSsid()
-        if ssid.isEmpty
-        {
-            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "wifisetting_view") as! WifiSettingViewController
-            self.present(secondViewController, animated: true, completion: nil)
-
-        }
-        else
-        {
-            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "scandevice_controller") as! ScanDeviceViewController
-            secondViewController.isFirstDisply = true
-            self.present(secondViewController, animated: true, completion: nil)
-
-        }
+//        ssid = getWifiSsid()
+//        if ssid.isEmpty
+//        {
+//            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "wifisetting_view") as! WifiSettingViewController
+//            self.present(secondViewController, animated: true, completion: nil)
+//
+//        }
+//        else
+//        {
+            let navController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ScanDeviceNavController") as! UINavigationController
+            let secondVC = navController.viewControllers.first as! ScanDeviceViewController
+            secondVC.isFirstDisply = true
+            self.present(navController, animated: true, completion: nil)
+            
+//        }
     }
 }

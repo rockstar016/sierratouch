@@ -72,10 +72,11 @@ class GroupListViewController: UIViewController, UICollectionViewDelegateFlowLay
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "groupmanipulate") as! GroupManipulateViewController
-        secondViewController.device = arraylist_devices[indexPath.row]
-//        self.present(secondViewController, animated: true, completion: nil)
-        self.navigationController?.pushViewController(secondViewController, animated: true)
+        
+        let navController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ControlGroupNavController") as! UINavigationController
+        let secondVC = navController.viewControllers.first as! GroupManipulateViewController
+        secondVC.device = arraylist_devices[indexPath.row]
+        self.present(navController, animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -110,8 +111,12 @@ class GroupListViewController: UIViewController, UICollectionViewDelegateFlowLay
         
     }
     
-    @IBAction func OnClickAdd(_ sender: Any) {
+    @IBAction func OnClickAdd(_ sender: Any)
+    {
+        let navController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddGroupNavController") as! UINavigationController
+        let secondVC = navController.viewControllers.first as! AddGroupViewController
         
+        self.present(navController, animated: true, completion: nil)
     }
     
     @IBAction func OnClickBack(_ sender: Any) {

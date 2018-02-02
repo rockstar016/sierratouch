@@ -76,8 +76,8 @@ class GroupManipulateViewController: UIViewController,UIGestureRecognizerDelegat
     }
     
     @IBAction func onClickBack(_ sender: Any) {
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "touchListActivity") as! TouchListViewController
-        self.present(secondViewController, animated: true, completion: nil)
+
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func onClickEditGroup(_ sender: Any) {
@@ -119,14 +119,14 @@ class GroupManipulateViewController: UIViewController,UIGestureRecognizerDelegat
                 }
         }
     }
-    @IBAction func onClickAdvancedButton(_ sender: Any) {
-        bt_advanced.selected_value = !bt_advanced.selected_value
-        showHideAdvancedView()
+    @IBAction func onClickSettingdButton(_ sender: Any) {
+//        bt_advanced.selected_value = !bt_advanced.selected_value
+//        showHideAdvancedView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        bt_advanced.selected_value = false
-        showHideAdvancedView()
+//        bt_advanced.selected_value = false
+//        showHideAdvancedView()
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleProgressBar(_sender:)))
         vertical_progress.addGestureRecognizer(tap)
         vertical_progress.isUserInteractionEnabled = true
@@ -179,7 +179,7 @@ class GroupManipulateViewController: UIViewController,UIGestureRecognizerDelegat
         else{
             img_state.image = UIImage(named:"device_touch_status_off")
         }
-        switch_status.isOn = device.group_led_status
+//        switch_status.isOn = device.group_led_status
         txt_group_name.text = device.group_name
         
     }

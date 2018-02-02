@@ -68,30 +68,30 @@ class SceneListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
     @IBAction func onClickBackButton(_ sender: Any) {
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "touchListActivity") as! TouchListViewController
-        self.present(secondViewController, animated: true, completion: nil)
+
+        tabBarController?.selectedIndex = 0
     }
     
-    @IBAction func onClickAddScene(_ sender: RoundGreenButton) {
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "scene_edit_controller") as! SceneEditViewController
-        secondViewController.is_update = false
-        secondViewController.scene_model = SceneModel()
-        
-        self.present(secondViewController, animated: true, completion: nil)
+    @IBAction func onClickAddScene(_ sender: Any) {
+
+        let navController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ScieneEditNavController") as! UINavigationController
+        let secondVC = navController.viewControllers.first as! SceneEditViewController
+        secondVC.is_update = false
+        secondVC.scene_model = SceneModel()
+        self.present(navController, animated: true, completion: nil)
 
     }
     
         
     func clickEditButton(index:Int){
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "scene_edit_controller") as! SceneEditViewController
-        secondViewController.is_update = true
-        secondViewController.scene_model = data_source[index]
-        self.present(secondViewController, animated: true, completion: nil)
+        
+        let navController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ScieneEditNavController") as! UINavigationController
+        let secondVC = navController.viewControllers.first as! SceneEditViewController
+        secondVC.is_update = true
+        secondVC.scene_model = data_source[index]
+        self.present(navController, animated: true, completion: nil)
     }
     
-    
-    
-        
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

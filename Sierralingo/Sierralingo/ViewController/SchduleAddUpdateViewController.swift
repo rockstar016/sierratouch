@@ -10,6 +10,8 @@ import UIKit
 import MLVerticalProgressView
 import MBProgressHUD
 import Alamofire
+@available(iOS 10.0, *)
+
 class SchduleAddUpdateViewController: UIViewController {
 
     @IBOutlet weak var switch_status: UISwitch!
@@ -24,10 +26,10 @@ class SchduleAddUpdateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if is_update == true {
-            self.navigation_item.title = "Edit Schedule"
+//            self.navigation_item.title = "Edit Schedule"
         }
         else{
-            self.navigation_item.title = "Add to Schedule"
+//            self.navigation_item.title = "Add to Schedule"
         }
         
         self.initAllUIBasedOnDevice()
@@ -104,9 +106,9 @@ class SchduleAddUpdateViewController: UIViewController {
     }
 
     func goParentScreen(){
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "schedulelistview") as! ScheduleListViewController
-        secondViewController.touch_device = touch_device
-        self.present(secondViewController, animated: true, completion: nil)
+//        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "schedulelistview") as! ScheduleListViewController
+//        secondViewController.touch_device = touch_device
+//        self.present(secondViewController, animated: true, completion: nil)
     }
     
     @IBAction func onClickSaveButton(_ sender: Any)

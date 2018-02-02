@@ -13,6 +13,10 @@
 		83D161E41E7BEF1B00107AA7 /* smartlinklib_7x.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D161E31E7BEF1B00107AA7 /* smartlinklib_7x.m */; };
 		CC0E24E51E80D81E00B448DF /* WhenBackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0E24E41E80D81E00B448DF /* WhenBackModel.swift */; };
 		CC0E24E71E81171100B448DF /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0E24E61E81171100B448DF /* Connection.swift */; };
+		CC2FC32220222EC90066CEB4 /* TouchSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2FC32120222EC90066CEB4 /* TouchSettingViewController.swift */; };
+		CC2FC3242022379B0066CEB4 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2FC3232022379B0066CEB4 /* CustomTextField.swift */; };
+		CC2FC32620223A5A0066CEB4 /* PencilButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2FC32520223A5A0066CEB4 /* PencilButton.swift */; };
+		CC31622920246CC900ED25AE /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC31622820246CC900ED25AE /* AddGroupViewController.swift */; };
 		CCDE95041E7F85650037BF04 /* CustomSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDE95031E7F85650037BF04 /* CustomSwitch.swift */; };
 		DD08D60A1E67D27D008186D7 /* TouchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08D6091E67D27D008186D7 /* TouchListViewController.swift */; };
 		DD1EC5861E6F30ED00D23906 /* WifiSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1EC5851E6F30ED00D23906 /* WifiSettingViewController.swift */; };
@@ -91,6 +95,10 @@
 		B031FE5A4F604DCC5D1DCF7D /* Pods_SierralingoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SierralingoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC0E24E41E80D81E00B448DF /* WhenBackModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBackModel.swift; sourceTree = "<group>"; };
 		CC0E24E61E81171100B448DF /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		CC2FC32120222EC90066CEB4 /* TouchSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchSettingViewController.swift; sourceTree = "<group>"; };
+		CC2FC3232022379B0066CEB4 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		CC2FC32520223A5A0066CEB4 /* PencilButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilButton.swift; sourceTree = "<group>"; };
+		CC31622820246CC900ED25AE /* AddGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		CCDE95031E7F85650037BF04 /* CustomSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSwitch.swift; sourceTree = "<group>"; };
 		DD08D6091E67D27D008186D7 /* TouchListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchListViewController.swift; sourceTree = "<group>"; };
 		DD1EC5851E6F30ED00D23906 /* WifiSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WifiSettingViewController.swift; sourceTree = "<group>"; };
@@ -297,6 +305,8 @@
 				DD1EC5B01E6F903A00D23906 /* AddTouchViewController.swift */,
 				DD2E3083200BCEEC00A319A9 /* TouchMainRootController.swift */,
 				DD2E3085200BE7A900A319A9 /* GroupListViewController.swift */,
+				CC2FC32120222EC90066CEB4 /* TouchSettingViewController.swift */,
+				CC31622820246CC900ED25AE /* AddGroupViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -320,6 +330,8 @@
 				CCDE95031E7F85650037BF04 /* CustomSwitch.swift */,
 				DDA44AA72009650400FD4231 /* GradientButton.swift */,
 				DD2E3087200BE83100A319A9 /* GroupListViewCell.swift */,
+				CC2FC3232022379B0066CEB4 /* CustomTextField.swift */,
+				CC2FC32520223A5A0066CEB4 /* PencilButton.swift */,
 			);
 			name = CustomViews;
 			path = Sierralingo/CustomViews;
@@ -660,9 +672,11 @@
 				DD839A861E663B2600767ED3 /* CheckboxButton.swift in Sources */,
 				DD2E3088200BE83100A319A9 /* GroupListViewCell.swift in Sources */,
 				DD1EC5B11E6F903A00D23906 /* AddTouchViewController.swift in Sources */,
+				CC2FC32220222EC90066CEB4 /* TouchSettingViewController.swift in Sources */,
 				DD7B6BA11E6C81170025401A /* SchduleAddUpdateViewController.swift in Sources */,
 				DD2E3084200BCEEC00A319A9 /* TouchMainRootController.swift in Sources */,
 				DD839A8E1E666DB200767ED3 /* DataSaveReference.swift in Sources */,
+				CC2FC3242022379B0066CEB4 /* CustomTextField.swift in Sources */,
 				DD29B44D1E69E83D0028E2F5 /* GroupEditCellView.swift in Sources */,
 				DD08D60A1E67D27D008186D7 /* TouchListViewController.swift in Sources */,
 				DD51FE831E6B67D2001E406C /* DayButton.swift in Sources */,
@@ -673,6 +687,7 @@
 				DDDC70951E6DC82200C978DA /* SceneEditViewController.swift in Sources */,
 				DD8C22CF1E686BE600754B0F /* GroupDevice.swift in Sources */,
 				CC0E24E71E81171100B448DF /* Connection.swift in Sources */,
+				CC2FC32620223A5A0066CEB4 /* PencilButton.swift in Sources */,
 				DD51FE7D1E6AF622001E406C /* SchduleTableCell.swift in Sources */,
 				DD1EC5881E6F382000D23906 /* WifiPasswordViewController.swift in Sources */,
 				DD7B6BA51E6CE7A50025401A /* SceneListViewController.swift in Sources */,
@@ -681,6 +696,7 @@
 				DD1EC5861E6F30ED00D23906 /* WifiSettingViewController.swift in Sources */,
 				DD51FE811E6B1658001E406C /* ScheduleModel.swift in Sources */,
 				DD839A881E663CA900767ED3 /* RegisterViewController.swift in Sources */,
+				CC31622920246CC900ED25AE /* AddGroupViewController.swift in Sources */,
 				DD29B44F1E6A01320028E2F5 /* EditGroupViewController.swift in Sources */,
 				83D161E41E7BEF1B00107AA7 /* smartlinklib_7x.m in Sources */,
 				DD839A8A1E664F6400767ED3 /* BackgroundPanel.swift in Sources */,

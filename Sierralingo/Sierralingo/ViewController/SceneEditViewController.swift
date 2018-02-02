@@ -16,27 +16,29 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var txt_scene_name: UITextField!
     @IBOutlet weak var navigation_item: UINavigationItem!
     
-    @IBOutlet weak var btDoneDelete: RoundGreenButton!
+    @IBOutlet weak var btDoneDelete: UIButton!
     @IBOutlet weak var switch_light_onoff: CustomSwitch!
     var devices:[TouchDevice] = [TouchDevice]()
     var scene_model:SceneModel = SceneModel()
     var selection_list:[Bool] = [Bool]()
-    var is_update:Bool = Bool()
+    var is_update:Bool = false
     var is_deleted:Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        InitPushedController()
         if(is_update == true)
         {
-            navigation_item.title = "Edit Scene"
+//            navigation_item.title = "Edit Scene"
             btDoneDelete.setTitle("Delete", for: .normal)
             
         }
         else
         {
-            navigation_item.title = "Add Scene"
+//            navigation_item.title = "Add Scene"
             btDoneDelete.setTitle("Done", for: .normal)
         }
-        switch_light_onoff.setOn(scene_model.scene_turn == 1, animated: false)
+//        switch_light_onoff.setOn(scene_model.scene_turn == 1, animated: false)
         sendServiceTouchDevice()
         
     }
@@ -236,7 +238,7 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func goBackToPrevView(){
-        if(!is_deleted && is_update)
+        if(!(is_deleted && is_update))
         {
             let devices_list = self.getDevicesList()
             let turnvalue = self.getTurnValues()
@@ -246,8 +248,7 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         else
         {
-            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "scenelistcontroller") as! SceneListViewController
-            self.present(secondViewController, animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -262,8 +263,7 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
                     switch (response.result)
                     {
                         case .success( _):
-                            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "scenelistcontroller") as! SceneListViewController
-                            self.present(secondViewController, animated: true, completion: nil)
+                            self.dismiss(animated: true, completion: nil)
                             break
                         case .failure:
                             self.view.makeToast("Failed to udpate scene. Try again")

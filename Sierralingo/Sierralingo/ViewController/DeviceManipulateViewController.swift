@@ -25,6 +25,7 @@ class DeviceManipulateViewController: UIViewController,UIGestureRecognizerDelega
     var device:TouchDevice = TouchDevice()
     override func viewDidLoad() {
         super.viewDidLoad()
+        InitPushedController()
         vertical_progress.fillDoneColor = Constants.ControlColor.Dark_Green_Color
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleStatementImageView(_sender:)))
         tap.delegate = self;
@@ -42,14 +43,14 @@ class DeviceManipulateViewController: UIViewController,UIGestureRecognizerDelega
         else{
             img_state.image = UIImage(named:"device_touch_status_off")
         }
-        switch_status.isOn = device.device_led_status
-        txt_device_location.text = device.device_location
+//        switch_status.isOn = device.device_led_status
+//        txt_device_location.text = device.device_location
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        bt_advanced.selected_value = false
-        showHideAdvancedView()
+//        bt_advanced.selected_value = false
+//        showHideAdvancedView()
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleProgressBar(_sender:)))
         vertical_progress.addGestureRecognizer(tap)
         vertical_progress.isUserInteractionEnabled = true
@@ -99,8 +100,8 @@ class DeviceManipulateViewController: UIViewController,UIGestureRecognizerDelega
     }
     
     @IBAction func onClickBackButton(_ sender: Any) {
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "touchListActivity") as! TouchListViewController
-        self.present(secondViewController, animated: true, completion: nil)
+
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func OnClickAdvancedButton(_ sender: RoundGreenButton) {
@@ -163,9 +164,16 @@ class DeviceManipulateViewController: UIViewController,UIGestureRecognizerDelega
         }
         vertical_progress.setProgress(progress: progress_value, animated: true)
     }
+    @available(iOS 10.0, *)
     @IBAction func onClickSchedule(_ sender: Any) {
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "schedulelistview") as! ScheduleListViewController
-        secondViewController.touch_device = device
-        self.present(secondViewController, animated: true, completion: nil)
+        
+        let navController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ScheduleListViewController") as! ScheduleListViewController
+        self.navigationController?.pushViewController(navController, animated: true)
+    }
+    
+    @IBAction func onClickSetting(_ sender: UIButton) {
+        let navController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TouchSettingViewController") as! TouchSettingViewController
+        self.navigationController?.pushViewController(navController, animated: true)
+        
     }
 }
