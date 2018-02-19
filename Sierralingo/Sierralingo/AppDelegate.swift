@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().titleTextAttributes = attrs
         IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
         return true
     }
     
@@ -36,9 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         if WhenBack.sharedInstance.Key == true && Connection.isInternetAvailable() == true{
  
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let secondViewController = mainStoryboard.instantiateViewController(withIdentifier: "scandevice_controller") as! ScanDeviceViewController
-            self.window?.rootViewController = secondViewController
+//            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//            let secondViewController = mainStoryboard.instantiateViewController(withIdentifier: "ScanDeviceNavController") as! UINavigationController
+//            self.window?.rootViewController = secondViewController
         }
 
     }

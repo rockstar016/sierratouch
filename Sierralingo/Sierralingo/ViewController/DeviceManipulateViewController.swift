@@ -10,8 +10,12 @@ import UIKit
 import MLVerticalProgressView
 import MBProgressHUD
 import Alamofire
+import NVActivityIndicatorView
 class DeviceManipulateViewController: UIViewController,UIGestureRecognizerDelegate {
 
+    @IBOutlet weak var recView: UIView!
+    
+    @IBOutlet weak var recButton: UIButton!
     @IBOutlet weak var vertical_progress: VerticalProgressView!
     @IBOutlet weak var bt_schedule: RoundGreenButton!
     @IBOutlet weak var bt_save_changes: RoundGreenButton!
@@ -23,6 +27,7 @@ class DeviceManipulateViewController: UIViewController,UIGestureRecognizerDelega
     @IBOutlet weak var controller_view: UIView!
     
     var device:TouchDevice = TouchDevice()
+    var loadingAcitivity:NVActivityIndicatorView?=nil
     override func viewDidLoad() {
         super.viewDidLoad()
         InitPushedController()
@@ -175,5 +180,15 @@ class DeviceManipulateViewController: UIViewController,UIGestureRecognizerDelega
         let navController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TouchSettingViewController") as! TouchSettingViewController
         self.navigationController?.pushViewController(navController, animated: true)
         
+    }
+    @available(iOS 10.0, *)
+    @IBAction func onRecButton(_ sender: Any) {
+        
+        self.recButton.backgroundColor = UIColor(displayP3Red: 182/255, green: 200/255, blue: 40/255, alpha: 1.0)
+        recView.isHidden = false
+        loadingAcitivity = NVActivityIndicatorView(frame: CGRect(x: (recView.frame.width)/2 - 22.5, y: 20, width: 45, height: 45), type: .lineScalePulseOut, color: .white, padding: CGFloat(0))
+        
+        loadingAcitivity?.startAnimating()
+        recView.addSubview(loadingAcitivity!)
     }
 }

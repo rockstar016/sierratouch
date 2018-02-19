@@ -13,6 +13,8 @@ target 'Sierralingo' do
   pod 'ReachabilitySwift', '~> 3'
   pod 'IQKeyboardManagerSwift', '4.0.8'
   pod 'UICircularProgressRing'
+  pod ‘NVActivityIndicatorView’
+
   target 'SierralingoTests' do
     inherit! :search_paths
     # Pods for testing

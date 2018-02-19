@@ -23,11 +23,11 @@ class WifiPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadingView = (storyboard?.instantiateViewController(withIdentifier: "loading_view"))!
-        txt_ssid.text = txt_ssid_content
+//        txt_ssid.text = txt_ssid_content
         smartlib = HFSmartLink.shareInstence()
         smartlib?.isConfigOneDevice = true
         smartlib?.waitTimers = 30;
-        checkbox.isChecked = false
+//        checkbox.isChecked = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,54 +54,56 @@ class WifiPasswordViewController: UIViewController {
             self.view.makeToast("Enter the Password, please")
             return
         }
+        
+        self.performSegue(withIdentifier: "ToScanWiFiPage", sender: nil)
         /**/
         addLoadingView()
         
-        if(!isconnecting)
-        {
-            isconnecting = true;
-            smartlib?.start(withSSID: txt_ssid_content, key: txt_password.text, withV3x: true,
-                            processblock: {
-                                (pro:Int) in
-                                    print("progress value is \(pro)")
-                                },
-                            
-                            successBlock: {
-                                dev in
-                                    self.onSuccess(mac_id: (dev?.mac)!, ip: (dev?.ip)!)
-                                    return
-                            },
-            
-                            fail: {
-                                failMessage in
-                                    self.onFailed()
-                                    return
-                                
-                            },
-            
-                            end: {
-                                deviceDic in
-                                    self.onFailed()
-                                    return
-                            })
-            
-            
-        }
-        else{
-            smartlib?.stop({
-                stopMsg, isOk in
-                if isOk {
-                    self.isconnecting = false
-                    self.removeLoadingView()
-                }
-                else{
-                    self.onFailed()
-                }
-                
-            })
-        }
+//        if(!isconnecting)
+//        {
+//            isconnecting = true;
+//            smartlib?.start(withSSID: txt_ssid_content, key: txt_password.text, withV3x: true,
+//                            processblock: {
+//                                (pro:Int) in
+//                                    print("progress value is \(pro)")
+//                                },
+//
+//                            successBlock: {
+//                                dev in
+//                                    self.onSuccess(mac_id: (dev?.mac)!, ip: (dev?.ip)!)
+//                                    return
+//                            },
+//
+//                            fail: {
+//                                failMessage in
+//                                    self.onFailed()
+//                                    return
+//
+//                            },
+//
+//                            end: {
+//                                deviceDic in
+//                                    self.onFailed()
+//                                    return
+//                            })
+//
+//
+//        }
+//        else{
+//            smartlib?.stop({
+//                stopMsg, isOk in
+//                if isOk {
+//                    self.isconnecting = false
+//                    self.removeLoadingView()
+//                }
+//                else{
+//                    self.onFailed()
+//                }
+//
+//            })
+//        }
  /**/
-        //onSuccess(mac_id: "mymac1234", ip: "myip123")
+//        onSuccess(mac_id: "mymac1234", ip: "myip123")
     }
     
     

@@ -166,30 +166,30 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
             var dim_array = scene_model.dimvalue.characters.split{$0 == "|"}.map(String.init)
             
             selection_list.removeAll()
-            for i in 0...devices.count - 1 {
-                selection_list.append(false)
-                devices[i].device_led_status = false
-                devices[i].device_dim_value = 0
-                if(members_array.count > 0)
-                {
-                    for j in 0...members_array.count-1{
-                        if Int(devices[i].device_id) == Int(members_array[j]) {
-                            selection_list[i] = true;
-                            devices[i].device_led_status = Int(status_array[j]) == 1 ? true : false
-                            devices[i].device_dim_value = Int(dim_array[j])!
-                        }
-                    }
-                }
-            }
+//            for i in 0...devices.count - 1 {
+//                selection_list.append(false)
+//                devices[i].device_led_status = false
+//                devices[i].device_dim_value = 0
+//                if(members_array.count > 0)
+//                {
+//                    for j in 0...members_array.count-1{
+//                        if Int(devices[i].device_id) == Int(members_array[j]) {
+//                            selection_list[i] = true;
+//                            devices[i].device_led_status = Int(status_array[j]) == 1 ? true : false
+//                            devices[i].device_dim_value = Int(dim_array[j])!
+//                        }
+//                    }
+//                }
+//            }
             txt_scene_name.text = scene_model.scene_name
         }
         else{
             selection_list.removeAll()
-            for i in 0...devices.count-1 {
-                selection_list.append(false)
-                devices[i].device_led_status = false
-                devices[i].device_dim_value = 0
-            }
+//            for i in 0...devices.count-1 {
+//                selection_list.append(false)
+//                devices[i].device_led_status = false
+//                devices[i].device_dim_value = 0
+//            }
         }
         table_view.reloadData()
     }
@@ -297,44 +297,44 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func getDevicesList() -> String {
         var selected_device:String = ""
-        for i in 0...devices.count-1{
-            if(selection_list[i] == true){
-                selected_device += devices[i].device_id + "|"
-            }
-        }
-        if(selected_device.characters.count > 1){
-            let index = selected_device.index(selected_device.startIndex, offsetBy: selected_device.characters.count-1)
-            selected_device = selected_device.substring(to: index)
-        }
+//        for i in 0...devices.count-1{
+//            if(selection_list[i] == true){
+//                selected_device += devices[i].device_id + "|"
+//            }
+//        }
+//        if(selected_device.characters.count > 1){
+//            let index = selected_device.index(selected_device.startIndex, offsetBy: selected_device.characters.count-1)
+//            selected_device = selected_device.substring(to: index)
+//        }
         return selected_device
     }
     
     func getTurnValues() -> String{
         var turn_device:String = ""
-        for i in 0...devices.count-1{
-            if(selection_list[i] == true){
-                let status = devices[i].device_led_status == true ? "1" : "0"
-                turn_device += status + "|"
-            }
-        }
-        if(turn_device.characters.count > 1){
-            let index = turn_device.index(turn_device.startIndex, offsetBy: turn_device.characters.count-1)
-            turn_device = turn_device.substring(to: index)
-        }
+//        for i in 0...devices.count-1{
+//            if(selection_list[i] == true){
+//                let status = devices[i].device_led_status == true ? "1" : "0"
+//                turn_device += status + "|"
+//            }
+//        }
+//        if(turn_device.characters.count > 1){
+//            let index = turn_device.index(turn_device.startIndex, offsetBy: turn_device.characters.count-1)
+//            turn_device = turn_device.substring(to: index)
+//        }
         return turn_device
     }
     
     func getDimValues() -> String{
         var dim_device:String = ""
-        for i in 0...devices.count-1{
-            if(selection_list[i] == true){
-                dim_device += String.init(format: "%d|", devices[i].device_dim_value)
-            }
-        }
-        if(dim_device.characters.count > 1){
-            let index = dim_device.index(dim_device.startIndex, offsetBy: dim_device.characters.count-1)
-            dim_device = dim_device.substring(to: index)
-        }
+//        for i in 0...devices.count-1{
+//            if(selection_list[i] == true){
+//                dim_device += String.init(format: "%d|", devices[i].device_dim_value)
+//            }
+//        }
+//        if(dim_device.characters.count > 1){
+//            let index = dim_device.index(dim_device.startIndex, offsetBy: dim_device.characters.count-1)
+//            dim_device = dim_device.substring(to: index)
+//        }
         return dim_device
     }
     

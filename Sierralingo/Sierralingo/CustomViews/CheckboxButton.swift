@@ -10,10 +10,10 @@ class CheckboxButton: UIButton {
         didSet{
             if isChecked == true {
                 self.setImage(checkedImage, for: .normal)
-                self.tintColor = Constants.ControlColor.Dark_Green_Color
+//                self.tintColor = Constants.ControlColor.Dark_Green_Color
             } else {
                 self.setImage(uncheckedImage, for: .normal)
-                self.tintColor = Constants.ControlColor.Dark_Green_Color
+//                self.tintColor = Constants.ControlColor.Dark_Green_Color
             }
         }
     }

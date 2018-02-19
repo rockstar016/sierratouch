@@ -82,7 +82,6 @@ class SceneListViewController: UIViewController, UITableViewDelegate, UITableVie
 
     }
     
-        
     func clickEditButton(index:Int){
         
         let navController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ScieneEditNavController") as! UINavigationController

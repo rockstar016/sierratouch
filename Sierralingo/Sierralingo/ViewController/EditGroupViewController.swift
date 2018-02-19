@@ -22,6 +22,7 @@ class EditGroupViewController: UIViewController, UICollectionViewDataSource,
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        InitPushedController()
         sendServiceTouchDevice()
     }
 
@@ -119,9 +120,10 @@ class EditGroupViewController: UIViewController, UICollectionViewDataSource,
     
     @IBAction func onClickBack(_ sender: Any) {
         if(is_update == true){
-            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "groupmanipulate") as! GroupManipulateViewController
-            secondViewController.device = group
-            self.present(secondViewController, animated: true, completion: nil)
+//            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "groupmanipulate") as! GroupManipulateViewController
+//            secondViewController.device = group
+//            self.present(secondViewController, animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
         else{
             let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "touchListActivity") as! TouchListViewController
@@ -131,13 +133,13 @@ class EditGroupViewController: UIViewController, UICollectionViewDataSource,
 
     @IBAction func onClickCancel(_ sender: Any) {
         if(is_update == true){
-            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "groupmanipulate") as! GroupManipulateViewController
-            secondViewController.device = group
-            self.present(secondViewController, animated: true, completion: nil)
+//            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "groupmanipulate") as! GroupManipulateViewController
+//            secondViewController.device = group
+//            self.present(secondViewController, animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
         else{
-            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "touchListActivity") as! TouchListViewController
-            self.present(secondViewController, animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
 
     }
@@ -148,13 +150,13 @@ class EditGroupViewController: UIViewController, UICollectionViewDataSource,
     @IBAction func onClickDone(_ sender: Any) {
         
         var selected_device:String = ""
-        for i in 0...devices.count-1{
-            if(selection_list[i] == true){
-                selected_device += devices[i].device_id + "|"
-            }
-        }
-        if(selected_device.characters.count > 1){
-            let index = selected_device.index(selected_device.startIndex, offsetBy: selected_device.characters.count-1)
+//        for i in 0...devices.count-1{
+//            if(selection_list[i] == true){
+//                selected_device += devices[i].device_id + "|"
+//            }
+//        }
+        if(selected_device.count > 1){
+            let index = selected_device.index(selected_device.startIndex, offsetBy: selected_device.count-1)
             selected_device = selected_device.substring(to: index)
         }
         var group_name:String = txt_group_name.text!
@@ -187,8 +189,9 @@ class EditGroupViewController: UIViewController, UICollectionViewDataSource,
                     let res = JSON as! NSDictionary
                     let result = res.object(forKey: "success") as! Int
                     if result == Constants.ResponseResult.SUCCESS_KEY{
-                        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "touchListActivity") as! TouchListViewController
-                        self.present(secondViewController, animated: true, completion: nil)
+//                        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "touchListActivity") as! TouchListViewController
+//                        self.present(secondViewController, animated: true, completion: nil)
+                        self.dismiss(animated: true, completion: nil)
                     }
                     else{
                         self.view.makeToast("Failed to create. Try again")
@@ -222,9 +225,10 @@ class EditGroupViewController: UIViewController, UICollectionViewDataSource,
                     let result = Int(res.object(forKey: "success") as! String)!
                     if result == Constants.ResponseResult.SUCCESS_KEY{
                         
-                        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "groupmanipulate") as! GroupManipulateViewController
-                        secondViewController.device = self.group
-                        self.present(secondViewController, animated: true, completion: nil)
+//                        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "groupmanipulate") as! GroupManipulateViewController
+//                        secondViewController.device = self.group
+//                        self.present(secondViewController, animated: true, completion: nil)
+                        self.dismiss(animated: true, completion: nil)
                     }
                     else{
                         self.view.makeToast("Failed to update. Try again")

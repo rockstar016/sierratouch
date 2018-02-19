@@ -10,8 +10,11 @@ import UIKit
 import MLVerticalProgressView
 import MBProgressHUD
 import Alamofire
+import NVActivityIndicatorView
 class GroupManipulateViewController: UIViewController,UIGestureRecognizerDelegate {
 
+    @IBOutlet weak var recButton: UIButton!
+    @IBOutlet weak var recView: UIView!
     @IBOutlet weak var bt_edit_group: RoundGreenButton!
     @IBOutlet weak var bt_save_changes: RoundGreenButton!
     @IBOutlet weak var view_advanced: UIView!
@@ -22,6 +25,8 @@ class GroupManipulateViewController: UIViewController,UIGestureRecognizerDelegat
     @IBOutlet weak var img_state: UIImageView!
     @IBOutlet weak var txt_group_name: UILabel!
     var device:GroupDevice = GroupDevice()
+    var loadingAcitivity:NVActivityIndicatorView?=nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         InitPushedController()
@@ -81,10 +86,13 @@ class GroupManipulateViewController: UIViewController,UIGestureRecognizerDelegat
     }
     
     @IBAction func onClickEditGroup(_ sender: Any) {
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "groupeditviewcontroller") as! EditGroupViewController
-        secondViewController.group = device
-        secondViewController.is_update = true
-        self.present(secondViewController, animated: true, completion: nil)
+        
+        let navController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddGroupNavController") as! UINavigationController
+        let secondVC = navController.viewControllers.first as! EditGroupViewController
+        secondVC.group = device
+        secondVC.is_update = true
+        self.present(navController, animated: true, completion: nil)
+
     }
     
     
@@ -122,6 +130,8 @@ class GroupManipulateViewController: UIViewController,UIGestureRecognizerDelegat
     @IBAction func onClickSettingdButton(_ sender: Any) {
 //        bt_advanced.selected_value = !bt_advanced.selected_value
 //        showHideAdvancedView()
+        
+        self.performSegue(withIdentifier: "toGroupSettingPage", sender: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -191,5 +201,16 @@ class GroupManipulateViewController: UIViewController,UIGestureRecognizerDelegat
             current_percentage = 0.1
         }
         vertical_progress.setProgress(progress: Float(current_percentage), animated: true)
+    }
+    @available(iOS 10.0, *)
+    @IBAction func onTapRecButton(_ sender: Any) {
+        
+        self.recButton.backgroundColor = UIColor(displayP3Red: 182/255, green: 200/255, blue: 40/255, alpha: 1.0)
+        recView.isHidden = false
+        loadingAcitivity = NVActivityIndicatorView(frame: CGRect(x: (recView.frame.width)/2 - 22.5, y: 20, width: 45, height: 45), type: .lineScalePulseOut, color: .white, padding: CGFloat(0))
+        
+        loadingAcitivity?.startAnimating()
+        recView.addSubview(loadingAcitivity!)
+        
     }
 }

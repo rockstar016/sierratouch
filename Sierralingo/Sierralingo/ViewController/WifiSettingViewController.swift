@@ -21,8 +21,8 @@ class WifiSettingViewController: UIViewController {
     }
     
     @IBAction func onClickBack(_ sender: Any) {
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "touchListActivity") as! TouchListViewController
-        self.present(secondViewController, animated: true, completion: nil)
+        
+        self.dismiss(animated: true, completion: nil)
     }
 
     @IBAction func onClickOpenWifiSettings(_ sender: Any) {

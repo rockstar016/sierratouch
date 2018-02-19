@@ -114,7 +114,7 @@ class GroupListViewController: UIViewController, UICollectionViewDelegateFlowLay
     @IBAction func OnClickAdd(_ sender: Any)
     {
         let navController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddGroupNavController") as! UINavigationController
-        let secondVC = navController.viewControllers.first as! AddGroupViewController
+        let secondVC = navController.viewControllers.first as! EditGroupViewController
         
         self.present(navController, animated: true, completion: nil)
     }

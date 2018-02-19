@@ -35,7 +35,7 @@ class ScanDeviceViewController: UIViewController {
             goToWiFiSetting()
             break
         case Reachability.NetworkStatus.reachableViaWiFi:
-            DispWifiInformation()
+//            DispWifiInformation()
             break
         }
     }
@@ -121,18 +121,27 @@ class ScanDeviceViewController: UIViewController {
     }
 
     @IBAction func onClickYes(_ sender: Any) {
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "wifipassword_view") as! WifiPasswordViewController
-        secondViewController.txt_ssid_content = ssid
-        self.present(secondViewController, animated: true, completion: nil)
+        
+        self.performSegue(withIdentifier: "toWiFiPasswordPage", sender: self)
+        
+//        secondViewController.txt_ssid_content = ssid
+        
 
     }
     @IBAction func onClickNo(_ sender: Any) {
         goToWiFiSetting()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if(segue.identifier == "toWiFiPasswordPage")
+        {
+        }
+    }
+    
     func goToWiFiSetting(){
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "wifisetting_view") as! WifiSettingViewController
-        self.present(secondViewController, animated: true, completion: nil)
+        
+        self.performSegue(withIdentifier: "toWiFiSettingPage", sender: self)
     }
     deinit {
         stopNotifier()
